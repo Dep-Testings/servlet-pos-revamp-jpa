@@ -30,7 +30,7 @@ public class ContextListener implements ServletContextListener {
         System.out.println("Connection pool is being initialized...!");
         try {
 
-            sce.getServletContext().setAttribute("sf",  Persistence.createEntityManagerFactory("JPAUNIT"));
+            sce.getServletContext().setAttribute("sf",  Persistence.createEntityManagerFactory("jpa-unit-1"));
 
 //            Properties properties = System.getProperties();
 //            for (Object o : properties.keySet()) {
@@ -57,7 +57,7 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         BasicDataSource bds = (BasicDataSource) sce.getServletContext().getAttribute("cp");
-        Persistence.createEntityManagerFactory("JPAUNIT").close();
+        Persistence.createEntityManagerFactory("jpa-unit-1").close();
         System.out.println("Connection pool is closed...!");
     }
 }
